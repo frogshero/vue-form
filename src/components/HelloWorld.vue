@@ -14,7 +14,7 @@
     <my-input-2 :aa.sync="formModel.input3"/>
 
     <el-form-item>
-        <el-button :click="onClick" type="primary">主要按钮</el-button>
+        <el-button @click="onClick" type="primary">主要按钮</el-button>
     </el-form-item>    
     </el-form>
   </div>
@@ -23,6 +23,7 @@
 <script>
 import MyInput from './MyInput'
 import MyInput2 from './MyInput2'
+import CODE from '../common/code.js'
 
 export default {
   name: 'HelloWorld',
@@ -52,7 +53,7 @@ export default {
   },
   methods: {
     onClick() {
-
+      console.log(CODE.globalEnum.OK);  //这个值在console是不能inspect的
     }
   }
 }
