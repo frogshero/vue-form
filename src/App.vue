@@ -1,26 +1,61 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <my-form-3 :addForm1="addForm"/>
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <!-- <my-form-3 :addForm1="addForm"/> -->
+    <!-- <fc-radio type='ElRadio' 
+      @change="onChange" @handleChange="onHandleChange" @input="onInput"
+      :options="radios" v-model="addForm.radio"/> -->
+    <MyDialog/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import MyForm2 from './components/MyForm2.vue'
-import MyForm3 from './components/MyForm3.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+// import MyForm2 from './components/MyForm2.vue'
+// import MyForm3 from './components/MyForm3.vue'
+  import FcRadio from './components/FcRadio';  //不用组件内的name
+  import MyDialog from './components/MyDialog';
 export default {
   name: 'App',
+  provide: {
+    //模板不需要配置
+      defVal: 'vv'
+  },
   components: {
-    HelloWorld,
-    MyForm2,
-    MyForm3
+    FcRadio,
+    MyDialog
   },
   data() {
     return {
       // addForm: {radio: '3'} 
-      addForm: {radio: 3}
+      addForm: {radio: 3},
+      radios: [
+        {value: 0, label: "不包邮", disabled: false},
+        {value: 1, label: "包邮", disabled: false},
+        {value: 2, label: "未知", disabled: true},
+      ]
     }
+  },
+  methods: {
+    //input -> change -> handleChange
+    onChange(a, b, c) {
+      console.log('change');
+      console.log(a);
+      console.log(b);
+      console.log(c);
+    },
+    onHandleChange(a, b, c) {
+      console.log('handle');
+      console.log(a);
+      console.log(b);
+      console.log(c);
+    },
+    onInput(a, b, c) {
+      console.log('input');
+      console.log(a);
+      console.log(b);
+      console.log(c);
+    }         
   }
 }
 </script>

@@ -25,9 +25,9 @@
 
     <div>
   <el-radio-group v-model="addForm.radio">
-    <my-el-radio :label="3">备选项3</my-el-radio>
-    <my-el-radio :label="6">备选项6</my-el-radio>
-    <my-el-radio :label="9">备选项9</my-el-radio>
+    <my-el-radio label="3">备选项3</my-el-radio>
+    <my-el-radio label="6">备选项6</my-el-radio>
+    <my-el-radio label="9">备选项9</my-el-radio>
   </el-radio-group>
   </div>
  
