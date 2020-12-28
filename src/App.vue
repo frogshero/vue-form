@@ -2,10 +2,14 @@
   <div id="app">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <!-- <my-form-3 :addForm1="addForm"/> -->
-    <!-- <fc-radio type='ElRadio' 
+    <fc-radio type='ElRadio' 
       @change="onChange" @handleChange="onHandleChange" @input="onInput"
-      :options="radios" v-model="addForm.radio"/> -->
-    <MyDialog/>
+      :options="radios" v-model="addForm.radio"/>
+    <!-- <MyDialog/> -->
+
+    <jsx-input v-model="txt" :ppt="txt"/>
+    <create-btn type='danger'/>
+    <el-button>xxx</el-button>
   </div>
 </template>
 
@@ -15,6 +19,8 @@
 // import MyForm3 from './components/MyForm3.vue'
   import FcRadio from './components/FcRadio';  //不用组件内的name
   import MyDialog from './components/MyDialog';
+  import CreateBtn from './components/CreateBtn.vue';
+import JsxInput from './components/JsxInput.vue';
 export default {
   name: 'App',
   provide: {
@@ -23,7 +29,9 @@ export default {
   },
   components: {
     FcRadio,
-    MyDialog
+    MyDialog,
+    CreateBtn,
+    JsxInput,
   },
   data() {
     return {
@@ -33,7 +41,9 @@ export default {
         {value: 0, label: "不包邮", disabled: false},
         {value: 1, label: "包邮", disabled: false},
         {value: 2, label: "未知", disabled: true},
-      ]
+      ],
+      txt: '',
+
     }
   },
   methods: {
