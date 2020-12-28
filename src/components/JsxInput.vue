@@ -7,7 +7,8 @@ export default {
         ppt: {
             type: String,
             default: ''
-        }
+        },
+        value: '',
     },
     render(h, ctx) {
         return <el-input {...ctx.data}></el-input>

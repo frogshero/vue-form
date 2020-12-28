@@ -7,7 +7,7 @@
       :options="radios" v-model="addForm.radio"/>
     <!-- <MyDialog/> -->
 
-    <jsx-input v-model="txt" :ppt="txt"/>
+    <jsx-input v-model="txt" @input="onInput"/>
     <create-btn type='danger'/>
     <el-button>xxx</el-button>
   </div>
@@ -48,6 +48,9 @@ export default {
   },
   methods: {
     //input -> change -> handleChange
+    onInput(val) {
+      this.txt = val;
+    },
     onChange(a, b, c) {
       console.log('change');
       console.log(a);
