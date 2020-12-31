@@ -8,7 +8,7 @@
   </el-radio-group>
   </div>
     <div>
-<el-radio-group v-model="addForm.radio">
+<el-radio-group v-model.number="addForm.radio">
     <el-radio label="3">备选项3</el-radio>
     <el-radio label="6">备选项6</el-radio>
     <el-radio label="9">备选项9</el-radio>
@@ -31,7 +31,8 @@
   </el-radio-group>
   </div>
  
- <button @click="clickChange"> change </button>
+ <button @click="addForm.radio = 9"> change num </button>
+ <button @click="addForm.radio = '3'"> change str </button> 
  <button @click="showValue"> showValue </button> 
 </div>
 </template>
@@ -51,7 +52,7 @@ export default {
     },
     methods: {
       clickChange() {
-        this.addForm.radio = '9';
+        // this.addForm.radio = '9';
       },
       showValue() {
         this.$message(JSON.stringify(this.addForm1));
