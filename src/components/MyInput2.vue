@@ -15,7 +15,6 @@ export default {
     },
     props: {
         aa: String,
-        
     },
     data: function() {
         return {

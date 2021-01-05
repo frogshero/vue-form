@@ -14,6 +14,7 @@
     <el-button>xxx</el-button>
     <my-radio label='xxx'/>
     <my-radio-2 v-model="radio2"/>
+    <create-element title='99999' label='88888' value='7777'/>
   </div>
 </template>
 
@@ -27,6 +28,7 @@ import MyForm3 from './components/MyForm3.vue'
   import JsxInput from './components/JsxInput.vue';
   import MyRadio from './components/MyRadio.vue';
   import MyRadio2 from './components/MyRadio2.vue';
+import CreateElement from './components/CreateElement.vue';
 export default {
   name: 'App',
   provide: {
@@ -41,6 +43,7 @@ export default {
     JsxInput,
     MyRadio,
     MyRadio2,
+    CreateElement,
   },
   data() {
     return {
@@ -52,7 +55,6 @@ export default {
         {value: 2, label: "未知", disabled: true},
       ],
       txt: '',
-
     }
   },
   methods: {

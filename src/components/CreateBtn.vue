@@ -14,6 +14,6 @@ export default {
     },
     render(h, ctx) {
         return <el-button type={ctx.props.type}>fffff</el-button>
-    }
+    },
 }
 </script>

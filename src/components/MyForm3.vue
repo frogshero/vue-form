@@ -8,7 +8,8 @@
   </el-radio-group>
   </div>
     <div>
-<el-radio-group v-model.number="addForm.radio">
+      <!-- .number也不好使 -->
+<el-radio-group v-model="addForm.radio" @change="onChange">
     <el-radio label="3">备选项3</el-radio>
     <el-radio label="6">备选项6</el-radio>
     <el-radio label="9">备选项9</el-radio>
@@ -54,11 +55,22 @@ export default {
       clickChange() {
         // this.addForm.radio = '9';
       },
+      onChange(v) {
+        console.log(v);
+      },
       showValue() {
         this.$message(JSON.stringify(this.addForm1));
       }
     },
+    beforeCreate() {
+        console.log(this.$options.propsData);
+        //this.$props还是undefine
+        console.log(this.$props);
+    },
     created() {
+        console.log(this.$options.propsData);
+        console.log(this.$props);
+
         this.addForm=this.addForm1;
     }
 
