@@ -1,79 +1,80 @@
 <template>
-<div>
+  <div>
     <div>
-  <el-radio-group v-model="addForm.radio">
-    <el-radio :label="'3'">备选项3</el-radio>
-    <el-radio :label="'6'">备选项6</el-radio>
-    <el-radio :label="'9'">备选项9</el-radio>
-  </el-radio-group>
-  </div>
+      <el-radio-group v-model="rrr">
+        <el-radio :label="'3'">备选项3</el-radio>
+        <el-radio :label="'6'">备选项6</el-radio>
+        <el-radio :label="'9'">备选项9</el-radio>
+      </el-radio-group>
+    </div>
     <div>
       <!-- .number也不好使 -->
-<el-radio-group v-model="addForm.radio" @change="onChange">
-    <el-radio label="3">备选项3</el-radio>
-    <el-radio label="6">备选项6</el-radio>
-    <el-radio label="9">备选项9</el-radio>
-  </el-radio-group>
-  </div>
+      <el-radio-group v-model="rrr" @change="onChange">
+        <el-radio label="3">备选项3</el-radio>
+        <el-radio label="6">备选项6</el-radio>
+        <el-radio label="9">备选项9</el-radio>
+      </el-radio-group>
+    </div>
 
     <div>
-  <el-radio-group v-model="addForm.radio">
-    <el-radio :label="3">备选项3</el-radio>
-    <el-radio :label="6">备选项6</el-radio>
-    <el-radio :label="9">备选项9</el-radio>
-  </el-radio-group>
-  </div>
+      <el-radio-group v-model="rrr">
+        <el-radio :label="3">备选项3</el-radio>
+        <el-radio :label="6">备选项6</el-radio>
+        <el-radio :label="9">备选项9</el-radio>
+      </el-radio-group>
+    </div>
 
     <div>
-  <el-radio-group v-model="addForm.radio">
-    <my-el-radio label="3">备选项3</my-el-radio>
-    <my-el-radio label="6">备选项6</my-el-radio>
-    <my-el-radio label="9">备选项9</my-el-radio>
-  </el-radio-group>
+      <el-radio-group v-model="rrr">
+        <my-el-radio label="3">备选项3</my-el-radio>
+        <my-el-radio label="6">备选项6</my-el-radio>
+        <my-el-radio label="9">备选项9</my-el-radio>
+      </el-radio-group>
+    </div>
+
+    <button @click="rrr = 9">change num</button>
+    <button @click="rrr = '3'">change str</button>
+    <button @click="showValue">showValue</button>
   </div>
- 
- <button @click="addForm.radio = 9"> change num </button>
- <button @click="addForm.radio = '3'"> change str </button> 
- <button @click="showValue"> showValue </button> 
-</div>
 </template>
 <script>
-import MyElRadio from './MyElRadio.vue'
-import {Input} from 'element-ui'
+import MyElRadio from "./MyElRadio.vue";
+import { Input } from "element-ui";
 export default {
-    components: {
-      MyElRadio
-    },
-    data () {
-      return {  
-      };
-    },
-    props: {
-        addForm1: Object,
-    },
-    methods: {
-      clickChange() {
-        // this.addForm.radio = '9';
-      },
-      onChange(v) {
-        console.log(v);
-      },
-      showValue() {
-        this.$message(JSON.stringify(this.addForm1));
-      }
-    },
-    beforeCreate() {
-        //就是props
-        console.log(this.$options.propsData);
-        //this.$props还是undefine
-        console.log(this.$props);
-    },
-    created() {
-        console.log(this.$options.propsData);
-        console.log(this.$props);
-
-        this.addForm=this.addForm1;
+  components: {
+    MyElRadio,
+  },
+  data() {
+    return {rrr: 3};
+  },
+  props: {
+    value: Object
+  },
+  watch: {
+    rrr: function(newValue, oldValue) {
+      this.$emit('input', newValue);
     }
-
-}
+  },
+  methods: {
+    clickChange() {
+      // this.addForm.radio = '9';
+    },
+    onChange(v) {
+      console.log(v);
+    },
+    showValue() {
+      this.$message(JSON.stringify(this.value));
+    },
+  },
+  beforeCreate() {
+    //就是props
+    console.log(this.$options.propsData);
+    //this.$props还是undefine
+    console.log(this.$props);
+  },
+  created() {
+    console.log(this.$options.propsData);
+    console.log(this.$props);
+  },
+};
 </script>
