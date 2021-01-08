@@ -1,20 +1,52 @@
 <template>
   <div id="app">
+    <el-row class="tac">
+       <el-col :span="8">
+    <el-menu
+      :default-active="mm"
+      class="el-menu-vertical-demo"
+      @open="handleOpen"
+      @close="handleClose">
+      <el-submenu index="1">
+        <template slot="title">
+          <i class="el-icon-location"></i>
+          <span>导航一</span>
+        </template>
+        <el-menu-item-group>
+          <template slot="title">分组一</template>
+          <el-menu-item index="1-1">选项1</el-menu-item>
+          <el-menu-item index="1-2">选项2</el-menu-item>
+        </el-menu-item-group>
+        <el-menu-item-group title="分组2">
+          <el-menu-item index="1-3">选项3</el-menu-item>
+        </el-menu-item-group>
+        <el-submenu index="1-4">
+          <template slot="title">选项4</template>
+          <el-menu-item index="1-4-1">选项1</el-menu-item>
+        </el-submenu>
+      </el-submenu>
+    </el-menu>
+ </el-col>
+  <el-col :span="8">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <my-form-3 :addForm1="addForm" 
       @change="onChange" @handleChange="onHandleChange" 
       @input="onInput" v-model="addForm.radio" />
-    <fc-radio type='ElRadio' :options="radios" 
-      v-model="addForm.radio"
+    <fc-radio type='button' :options="radios" @change="onChange2"
+      v-model="addForm.radio" text-color="#FF1493" fill='green' size='mini'
       />
     <!-- <MyDialog/> -->
 
     <jsx-input v-model="txt" @input="onInput"/>
-    <create-btn type='danger'/>
-    <el-button>xxx</el-button>
-    <my-radio label='xxx'/>
+    <create-btn type='danger' @click="changeMenu2"/>
+    <el-button @click="changeMenu">xxx</el-button>
+    <!-- <my-radio label='xxx'/> -->
     <my-radio-2 v-model="radio2"/>
     <create-element title='99999' label='88888' value='7777'/>
+    <func-component text='aaaaaa'/>
+    <render-comp />
+  </el-col>
+</el-row>       
   </div>
 </template>
 
@@ -29,6 +61,8 @@ import MyForm3 from './components/MyForm3.vue'
   import MyRadio from './components/MyRadio.vue';
   import MyRadio2 from './components/MyRadio2.vue';
 import CreateElement from './components/CreateElement.vue';
+import FuncComponent from './components/FuncComponent.vue';
+import RenderComp from './components/RenderComp.vue';
 export default {
   name: 'App',
   provide: {
@@ -44,9 +78,11 @@ export default {
     MyRadio,
     MyRadio2,
     CreateElement,
+    FuncComponent,
+    RenderComp
   },
   data() {
-    return {
+      return {
       radio2: 0,
       addForm: {radio: 3},
       radios: [
@@ -55,13 +91,22 @@ export default {
         {value: 2, label: "未知", disabled: true},
       ],
       txt: '',
+      mm: '1-4-1',
     }
   },
   methods: {
     //input -> change -> handleChange
+    changeMenu() {
+      //:default-active= ??
+      this.mm = '1-1';
+    },
+    changeMenu2() {
+      this.mm = '1-2';
+    },    
     onInput(val) {
       this.txt = val;
     },
+    onChange2(v) {console.log(v);},
     onChange(a, b, c) {
       console.log('change');
       console.log(a);
@@ -79,7 +124,13 @@ export default {
       console.log(a);
       console.log(b);
       console.log(c);
-    }         
+    },
+    handleOpen(key, keyPath) {
+        console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+        console.log(key, keyPath);
+    }
   }
 }
 </script>

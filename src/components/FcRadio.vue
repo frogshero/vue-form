@@ -14,6 +14,7 @@ export default {
         },
     },
     render(h, ctx) {
+        //ctx.data和createElement的参数数据对象一样被展开
         return <ElRadioGroup {...ctx.data}>{
             ctx.props.options.map((opt, index) => {
                 const props = { ...opt };

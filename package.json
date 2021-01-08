@@ -11,7 +11,8 @@
     "@vue/babel-preset-jsx": "^1.2.4",
     "core-js": "^3.8.1",
     "element-ui": "^2.14.1",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-router": "^3.4.9"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.9",

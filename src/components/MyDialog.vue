@@ -27,7 +27,7 @@ export default {
         MyInput2
     },
     provide() {
-        //模板不需要配置,只在初始化时调用一次
+        //模板不需要配置属性,只在初始化时调用一次
        return {defVal: this.inject11};
     },
     data: function() {

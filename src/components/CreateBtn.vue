@@ -13,7 +13,7 @@ export default {
 
     },
     render(h, ctx) {
-        return <el-button type={ctx.props.type}>fffff</el-button>
+        return <el-button {...ctx.data} type={ctx.props.type}>fffff</el-button>
     },
 }
 </script>

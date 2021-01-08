@@ -63,6 +63,7 @@ export default {
       }
     },
     beforeCreate() {
+        //就是props
         console.log(this.$options.propsData);
         //this.$props还是undefine
         console.log(this.$props);

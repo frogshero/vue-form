@@ -1,7 +1,3 @@
-<template>
-    <input v-model="xx" @change="onChange"/>
-</template>
-
 <script>
 export default {
     data() {
@@ -32,6 +28,18 @@ export default {
                 this.aa = val;
             }
         }
+    },
+    beforeCreate() {
+        console.log('my radio before created');
+    },
+    created() {
+        console.log('my radio created');
+    },    
+    mounted() {
+        console.log('my radio mounted');
+    },
+    render() {
+        return <input vModel={this.xx} vOn:change={this.onChange}/>
     }
 }
 </script>
