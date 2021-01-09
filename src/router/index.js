@@ -2,11 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Test from '../views/Test.vue'
-
+import Tool from '../tools/MappingTool.vue'
 Vue.use(VueRouter)
 
 const routes = [
   { path: '/', name: 'Test', component: Test},
+  { path: '/tool', name: 'Tool', component: Tool},
   { path: '/radio', name: 'Radio', component: ()=>import('../views/RadioTest.vue')},
   { path: '/Home', name: 'Home', component: Home},
   { path: '/about', name: 'About',
