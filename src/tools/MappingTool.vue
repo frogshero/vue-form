@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-row type="flex" justify="center">
-      <el-col :span="2">
+      <el-col :span="3">
           <DragList
             title="左列表"
             listId="leftList"
@@ -10,7 +10,7 @@
             class="all-field-list"
           />
       </el-col>
-      <el-col :span="2">
+      <el-col :span="3">
           <DragList
             title="右列表"
             listId="rightList"
@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-      leftArray: [1, 2, 3, 7, 8],
+      leftArray: [9, 1, 2, 3, 7, 8],
       rightArray: [4, 5, 6, 7, 8],
     };
   },
@@ -67,22 +67,5 @@ export default {
 
 
 <style lang='scss'>
-.el-row {
-  margin-top: 20px;
-}
 
-.el-col {
-  margin-left: 5px;
-}
-.board {
-  width: 1000px;
-  margin-left: 20px;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  align-items: flex-start;
-}
-.all-field-list {
-  min-height: 800px;
-}
 </style>
