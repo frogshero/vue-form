@@ -30,7 +30,8 @@
       </el-col>
       <el-col :span="8">
         <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-        <!-- <MyDialog/> -->
+        <MyDialog v-if="showDialog" @close-dialog="showDialog=false"/>
+        <button @click="showDialog=true">打开对话框</button>
 
         <jsx-input v-model="txt" @input="onInput" />
         <create-btn type="danger" @click="changeMenu2" />
@@ -70,6 +71,7 @@ export default {
   },
   data() {
     return {
+      showDialog: false,
       txt: "",
       mm: "1-4-1",
     };

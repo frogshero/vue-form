@@ -6,6 +6,7 @@
         width="30%"
         :before-close="handleClose">
 
+        <div>测试dialog内父子组件mounted顺序,父先子后</div>
         <my-input-2 />
 
         <span slot="footer" class="dialog-footer">
@@ -14,9 +15,7 @@
         </span>
     </el-dialog>
 
-    <button @click="dialogVisible=true">OPEN</button>
-        <button @click="fff">FFFF</button>
-    </div>
+</div>
 </template>
 
 <script>
@@ -32,13 +31,19 @@ export default {
     },
     data: function() {
         return {
-            dialogVisible: false,
+            dialogVisible: true,
             inject11: 'god',
+        }
+    },
+    watch: {
+        dialogVisible: {
+            handler() {
+                this.$emit('close-dialog');
+            }
         }
     },
     methods: {
         handleClose() {
-
         },
         fff() {
             this.iii.inject11 = 'ghost';
@@ -46,7 +51,8 @@ export default {
         }
     },
     mounted() {
-        //alert(this.defVal);
+        //mounted次序？？？
+        console.log('father mounted')
     }
 }
 </script>
