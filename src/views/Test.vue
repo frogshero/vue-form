@@ -29,9 +29,10 @@
         </el-menu>
       </el-col>
       <el-col :span="8">
-        <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
         <MyDialog v-if="showDialog" @close-dialog="showDialog=false"/>
-        <button @click="showDialog=true">打开对话框</button>
+        <my-component />
+
+        <el-button @click="showDialog=true">打开对话框</el-button>
 
         <jsx-input v-model="txt" @input="onInput" />
         <create-btn type="danger" @click="changeMenu2" />
@@ -55,6 +56,7 @@ import JsxInput from "../components/JsxInput.vue";
 import CreateElement from "../components/CreateElement.vue";
 import FuncComponent from "../components/FuncComponent.vue";
 import RenderComp from "../components/RenderComp.vue";
+import MyComponent from '../components/MyComponent.vue';
 export default {
   name: "Test",
   provide: {
@@ -68,6 +70,7 @@ export default {
     CreateElement,
     FuncComponent,
     RenderComp,
+    MyComponent,
   },
   data() {
     return {

@@ -30,13 +30,13 @@ export default {
         }
     },
     beforeCreate() {
-        console.log('my radio before created');
+        // console.log('my radio before created');
     },
     created() {
-        console.log('my radio created');
+        // console.log('my radio created');
     },    
     mounted() {
-        console.log('my radio mounted');
+        // console.log('my radio mounted');
     },
     render() {
         return <input vModel={this.xx} vOn:change={this.onChange}/>
