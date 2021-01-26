@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import util from '../util/util.js'
+import util from '../../util/util.js'
 export default {
     name: 'my-input-2',
     inject: {

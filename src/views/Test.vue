@@ -47,16 +47,14 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-// import MyForm2 from './components/MyForm2.vue'
-import MyForm3 from "../components/MyForm3.vue";
-import MyDialog from "../components/MyDialog";
-import CreateBtn from "../components/CreateBtn.vue";
-import JsxInput from "../components/JsxInput.vue";
-import CreateElement from "../components/CreateElement.vue";
-import FuncComponent from "../components/FuncComponent.vue";
-import RenderComp from "../components/RenderComp.vue";
-import MyComponent from '../components/MyComponent.vue';
+import MyForm3 from "../components/comp/MyForm3.vue";
+import MyDialog from "../components/comp/MyDialog";
+import CreateBtn from "../components/comp/CreateBtn.vue";
+import JsxInput from "../components/comp/JsxInput.vue";
+import CreateElement from "../components/comp/CreateElement.vue";
+import FuncComponent from "../components/comp/FuncComponent.vue";
+import RenderComp from "../components/comp/RenderComp.vue";
+import MyComponent from '../components/comp/MyComponent.vue';
 export default {
   name: "Test",
   provide: {

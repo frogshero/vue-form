@@ -22,10 +22,10 @@
 </template>
 
 <script>
-import FcRadio from "../components/FcRadio.vue"; //不用组件内的name
-import MyRadio from "../components/MyRadio.vue";
-import MyRadio2 from "../components/MyRadio2.vue";
-import MyForm3 from "../components/MyForm3.vue";
+import FcRadio from "../components/comp/FcRadio.vue"; //不用组件内的name
+import MyRadio from "../components/comp/MyRadio.vue";
+import MyRadio2 from "../components/comp/MyRadio2.vue";
+import MyForm3 from "../components/comp/MyForm3.vue";
 export default {
   components: {
     FcRadio,
