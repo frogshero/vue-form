@@ -6,7 +6,7 @@
 import BarTest from '../components/css/BarTest.vue'
 export default {
   components: { BarTest },
-    
+  
 }
 </script>
 
