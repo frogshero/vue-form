@@ -10,6 +10,9 @@
   </el-select>
 
   <tag-test />
+
+<a ref="ddd" href="http://localhost:8081/static/明细报表_1_20210128175125.xlsx" download="阿松大阿萨.xlsx">阿松大阿萨.xlsx</a>
+<button @click="onClick">ffff</button>
 </div>
 </template>
 
@@ -38,6 +41,18 @@ export default {
     onChange(v1, v2) {
       console.log(v1);
       console.log(v2);
+    },
+    onClick() {    
+
+      // var downloadElement = document.createElement('a');
+      // downloadElement.href = url;
+      // downloadElement.download = fname;
+      // document.body.appendChild(downloadElement);
+      // downloadElement.click(); 
+      // document.body.removeChild(downloadElement); 
+
+
+      this.$refs.ddd.click();
     }
   },
   mounted() {

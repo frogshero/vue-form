@@ -44,11 +44,11 @@
 </template>
 <script>
 /**
- * 改===为==
+ * 改===为==,数字字符类型匹配 '0' === 0 ?
  */
   import {Radio} from 'element-ui';
   export default {
     name: 'MyElRadio',
-    extends: Radio,
+    extends: Radio,  //就是Vue.extend
   };
 </script>

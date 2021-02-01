@@ -38,7 +38,7 @@
   </div>
 </template>
 <script>
-import MyElRadio from "./MyElRadio.vue";
+import MyElRadio from "../ele/MyElRadio.vue";
 import { Input } from "element-ui";
 export default {
   components: {
@@ -52,7 +52,7 @@ export default {
   },
   watch: {
     rrr: function(newValue, oldValue) {
-      this.$emit('input', newValue);
+      this.$emit('input', newValue);  //v-model的处理，给props.value赋值
     }
   },
   methods: {
