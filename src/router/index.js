@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Test from '../views/Test.vue'
 import Tool from '../tools/MappingTool.vue'
+import QrcodeList from '../tools/QrcodeList.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -16,7 +17,8 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
-  { path: '/css', name: 'CSS', component: () => import('../views/CSS.vue')}
+  { path: '/css', name: 'CSS', component: () => import('../views/CSS.vue')},
+  { path: '/qrcode', name: 'Qrcode', component: QrcodeList}
 ]
 
 const router = new VueRouter({

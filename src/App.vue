@@ -6,7 +6,8 @@
       <router-link to="/radio">Radio</router-link> |
       <router-link to="/home">Home</router-link> |      
       <router-link to="/about">About</router-link> |
-      <router-link to="/css">CSS</router-link>
+      <router-link to="/css">CSS</router-link> |
+      <router-link to="/qrcode">QRCode</router-link>
     </div>
     <router-view/>
   </div>

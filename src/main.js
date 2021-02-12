@@ -11,4 +11,5 @@ new Vue({
   render: function (h) { return h(App) }
 }).$mount('#app')
 
+import './common/axiosSetup.js'
 //    "@vue/cli-plugin-babel": "^4.5.9",  添加jsx支持必须有babel插件, core-js
