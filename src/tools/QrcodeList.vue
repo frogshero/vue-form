@@ -13,8 +13,15 @@
       <el-col :span="6">
         <div>{{ currentQrcode }}</div>
         <el-image :src="url" style="width: 290px; height: 290px"></el-image>
-        <el-button @click="startLoop">Start</el-button>
-        <el-button @click="stopLoop">Stop</el-button>
+        <!-- 加个br换行 -->
+        <br> 
+        <el-button type="primary" @click="startLoop">Start</el-button>
+        <el-button type="primary" @click="stopLoop">Stop</el-button>
+
+                <!-- display:block 独占一行 -->
+        <el-button style="display:block" ref="refBtn" type="primary" @click="packing($event)">装箱</el-button>
+        <!-- $event获取事件对象 -->
+
       </el-col>
     </el-row>
     <!-- <el-row>
@@ -42,6 +49,11 @@ export default {
     };
   },
   methods: {
+    packing(evt) {
+      console.log("click-------------");
+      //强制失去焦点
+      evt.target.blur();
+    },
     startLoop() {
       if (!this.qrcodeStr) {
         this.$message.error("没有输入qrocde");
@@ -62,10 +74,10 @@ export default {
       }, 5000);
     },
     stopLoop() {
-    //   let that = this;
-    //   this.intervalId = setInterval(function () {
-    //     that.currentQrcode = "2222222222222";
-    //   }, 3000);
+      //   let that = this;
+      //   this.intervalId = setInterval(function () {
+      //     that.currentQrcode = "2222222222222";
+      //   }, 3000);
       if (!this.intervalId) {
         this.$message.error("没有开始");
         return;
