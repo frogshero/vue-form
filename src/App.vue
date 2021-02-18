@@ -10,8 +10,16 @@
       <router-link to="/qrcode">QRCode</router-link>
     </div>
     <router-view/>
+    <!-- <qrcode-list /> -->
   </div>
 </template>
+
+<script>
+import QrcodeList from './tools/QrcodeList.vue'
+export default {
+  components: { QrcodeList },
+}
+</script>
 
 <style>
 #app {

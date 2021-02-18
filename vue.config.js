@@ -1,14 +1,15 @@
 module.exports = {
+    publicPath: './', //启用间接路径
     devServer: {
         port: 5001,
         logLevel: 'debug',
         proxy: {
             '/api/qrcode': {
-                target: 'https://cli.im',
+                target: 'https://api.pwmqr.com',
                 changeOrigin: true,
-                // pathrewrite: {
-                //     '^/api/qrcode': '/api/qrcode'
-                // }
+                pathRewrite: {
+                    '^/api/qrcode': '/qrcode'
+                }
             },
             '/api/ww/st': {
                 target: 'http://localhost:9077',
@@ -24,14 +25,14 @@ module.exports = {
                 headers: {
                   Referer: 'https://www.baidu.com'
                 },                
-                pathrewrite: {
+                pathRewrite: {
                     '^/api/baidu': ''
                 }
             },
             '/api/mesbasic': {
                 target: 'http://localhost:9081',
                 changeOrigin: true,
-                pathrewrite: {
+                pathRewrite: {
                     '^/api/mesbasic': '/mesbasic'
                 }
             }
