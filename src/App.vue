@@ -3,11 +3,14 @@
     <div id="nav">
       <router-link to="/">Test</router-link> |
       <router-link to="/tool">Tool</router-link> |      
-      <router-link to="/radio">Radio</router-link> |
+      <!-- <router-link to="/radio">Radio</router-link> | -->
       <router-link to="/home">Home</router-link> |      
       <router-link to="/about">About</router-link> |
-      <router-link to="/css">CSS</router-link> |
-      <router-link to="/qrcode">QRCode</router-link>
+      <!-- <router-link to="/css">CSS</router-link> | -->
+      <router-link to="/qrcode">QRCode</router-link> |
+      <router-link to="/nested">Nested</router-link> |
+      <router-link to="/nested/c1">Child1</router-link> |
+      <router-link to="/nested/c1/c2">Child2</router-link>
     </div>
     <router-view/>
     <!-- <qrcode-list /> -->

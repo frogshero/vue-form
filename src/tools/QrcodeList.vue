@@ -1,38 +1,40 @@
 <template>
-  <div>
-    <el-row>
-      <el-col :span="6" style="min-height: 1px"></el-col>
-      <el-col :span="6">
-        <el-input
+  <div class="main">
+    <div class="content">
+        <el-input style="width: 200px;"
           v-model="qrcodeStr"
           type="textarea"
           rows="30"
           @paste.native.capture.prevent="pasteQrcode"
         ></el-input>
-      </el-col>
-      <el-col :span="6">
-        <div>{{ currentQrcode }}</div>
-        <el-image :src="url" style="width: 290px; height: 290px"></el-image>
-        <!-- 加个br换行 -->
-        <br> 
-        <el-button type="primary" @click="startLoop">Start</el-button>
-        <el-button type="primary" @click="stopLoop">Stop</el-button>
 
-                <!-- display:block 独占一行 -->
-        <el-button style="display:block" ref="refBtn" type="primary" @click="packing($event)">装箱</el-button>
-        <!-- $event获取事件对象 -->
+        <div style="display: inline-block; vertical-align: top">
+          <div>{{ currentQrcode }}</div>
+          <el-image :src="url" style="width: 290px; height: 290px"></el-image>
 
-      </el-col>
-    </el-row>
-    <!-- <el-row>
-      <el-col :span="6" style="min-height: 1px"></el-col>
-      <el-col :span="6" style="min-height: 1px"></el-col>
-      <el-col :span="6"><el-button @click="startLoop">Start</el-button></el-col>
-    </el-row> -->
-    <!-- <el-button @click="getQrCodeImg">GET</el-button> -->
-    <!-- <el-button @click="baidu">Baidu</el-button> -->
+          <!-- 默认inline-block, 来自user agent stylesheet -->
+          <div>
+            <el-button type="primary" @click="startLoop">Start</el-button>
+            <el-button type="primary" @click="stopLoop">Stop</el-button>
+
+            <!-- block覆盖默认-->
+            <el-button style="display:block" ref="refBtn" type="primary" @click="packing($event)">装箱</el-button>
+          </div>
+        </div> 
+    </div>
   </div>
 </template>
+
+<style scoped>
+.main {
+  text-align: center;
+}
+.content {
+  width: 800px;  
+  margin: 0 auto;
+}
+
+</style>
 
 <script>
 import axios from "axios";
@@ -50,9 +52,16 @@ export default {
   },
   methods: {
     packing(evt) {
+      this.$prompt('test', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消'}).then(({value}) => {
+              console.log(value);
+      });
+
       console.log("click-------------");
       //强制失去焦点
       evt.target.blur();
+
     },
     startLoop() {
       if (!this.qrcodeStr) {
