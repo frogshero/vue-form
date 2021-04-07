@@ -1,10 +1,18 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import 'vue-multiselect/dist/vue-multiselect.min.css';
 import App from './App.vue'
 import router from './router'
+import Multiselect from 'vue-multiselect'
+import dlgs from '@/components/dlgs';
+
 Vue.use(ElementUI);
 Vue.config.productionTip = false
+
+Vue.component('multiselect', Multiselect)
+
+Vue.prototype.$dlgs = dlgs;
 
 new Vue({
   router,
