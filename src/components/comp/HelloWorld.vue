@@ -1,14 +1,19 @@
 <template>
   <div style="width:1500px">
-    <el-form :inline="true" :model="formModel" :rules="rules" ref="formRef">
+    <el-form :inline="true" :model="formModel" :rules="rules" ref="formRef">      
     <el-input v-model="formModel.input1" placeholder="请输入内容"></el-input>
+    <el-form-item label="My Select:" prop="mySelect">
+      <my-select v-model="formModel.mySelVal" @change="mySelectChange" size="small" clearable type="number" value=1 maxlength="3"/>
+      <el-button @click="changeMySel">change my input</el-button>      
+    </el-form-item>    
     <el-form-item label="a form item" prop="input4">
       <el-input v-model="formModel.input4" ></el-input>
     </el-form-item>
     <!-- prop放在el-form-item上, 但是对自定义组件无效 -->
-    <el-form-item label="customized" prop="input2">
+    <el-form-item label="My Input" prop="myInput">
     <!-- 自定义组件使用v-model 默认会利用名为 value 的 prop 和名为 input 的事件-->
-      <my-input v-model="formModel.input2"/>
+      <my-input v-model="formModel.myInput"/>
+      <el-button @click="changeMyInput">change my input</el-button>
     </el-form-item>
     <!-- .sync 会扩展成一个更新父组件绑定值的 v-on 侦听器 -->
     <el-form-item label="input3">    
@@ -113,15 +118,17 @@
 import MyInput from './MyInput.vue'
 import MyInput2 from './MyInput2.vue'
 import CODE from '../../common/code.js'
+import MySelect from './MySelect.vue'
 
 export default {
   name: 'HelloWorld',
-  components: { MyInput, MyInput2},
-  data: function(){
+  components: { MyInput, MyInput2, MySelect},
+  data() {
     return {
       formModel: {
+        mySelVal: 0,
         input1: "",
-        input2: "xxx",
+        myInput: "xxx",
         input3: "11",
         input4: 12345
       },
@@ -143,6 +150,9 @@ export default {
           input4: [
             {required: true, message: 'required', trigger: 'blur'},
             { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+          mySelect: [
+            {required: true, message: 'required', trigger: 'blur'},
           ]
       }
     }
@@ -153,6 +163,15 @@ export default {
   methods: {
     onClick() {
       console.log(CODE.globalEnum.OK);  //这个值在console是不能inspect的
+    },
+    changeMySel() {
+      this.formModel.mySelVal = 3;
+    },
+    mySelectChange(newVal) {
+      console.log("mySelectChange: " + newVal);
+    },
+    changeMyInput() {
+      this.formModel.myInput = '12';
     }
   }
 }

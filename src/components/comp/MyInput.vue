@@ -1,11 +1,7 @@
 <template>
 <div>
-    <input 
-        @input="handleInput"
-        @change="handleChange"
-        @blur="handleBlur"
-        ref="input"
-        />
+    <!-- 必须加：:value="value" 否则修改绑定的值不会回显 -->
+    <input @input="handleInput" @change="handleChange" @blur="handleBlur" :value="value" ref="input"/>
 </div>
 </template>
 
@@ -18,6 +14,11 @@ export default {
     mixins: [emitter],
     props: {
         value: [String, Number],
+    },
+    watch: {
+        value: function() {
+            console.log('myInput: ' + this.value);
+        }
     },
     methods: {
         handleInput(evt) {
@@ -35,9 +36,9 @@ export default {
             this.dispatch('ElFormItem', 'el.form.blur', [this.value]);
       },
     },
-    mounted() {
-        //初始化还需要这样：
-        this.$refs.input.value = this.value;
-    }
+    // mounted() {
+    //     //初始化还需要这样：
+    //     this.$refs.input.value = this.value;
+    // }
 }
 </script>

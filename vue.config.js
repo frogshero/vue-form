@@ -1,5 +1,8 @@
 module.exports = {
     publicPath: './', //启用间接路径
+    configureWebpack: {
+        devtool: 'source-map' //debug
+    },
     devServer: {
         port: 5001,
         logLevel: 'debug',
