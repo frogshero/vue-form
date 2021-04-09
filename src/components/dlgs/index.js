@@ -7,13 +7,13 @@ import Vue from 'vue';
 import Dlg from './Dlg.vue'
 import SelectDlg from './SelectDlg.vue'
 
-/*Vue.extend 主要代码 this就是Vue实例 主要代码
+/*Vue.extend this就是Vue实例, 这时候Vue实例还没有new出来
 var Super = this;
 var Sub = function VueComponent (options) {
-  this._init(options);
+  this._init(options);  //this指向Vue组件实例
 };
 Sub.prototype = Object.create(Super.prototype);  //方法创建一个新对象，使用现有的对象来提供新创建的对象的proto。
-Sub.prototype.constructor = Sub;
+Sub.prototype.constructor = Sub;  //手动将prototype设置为新对象有一个关键的副作用：它删除了constructor属性。prototype.constructor就是指向构造函数本身
 Sub.cid = cid++;
 Sub.options = mergeOptions(
   Super.options,
@@ -21,12 +21,13 @@ Sub.options = mergeOptions(
 );
 return sub
 */
-const DlgComponent = Vue.extend(SelectDlg);
+//SelectDlg只是一个选项对象，Vue.extend返回一个构造函数
+const DlgComponent = Vue.extend(SelectDlg); //Vue是构造函数，也是一个对象，在Vue.extend中的this就是指向Vue这个函数对象
 
 //组件实例
 let instance;
 
-const Dlgs = function (options, callback) {    
+const Dlgs = function (options, callback, resolve) {    
     if (!instance) {
         instance = new DlgComponent({el: document.createElement('div')}); //就是调用上面的this._init(options);
         //     Vue.prototype._init = function (options) { 主要代码
@@ -40,10 +41,10 @@ const Dlgs = function (options, callback) {
         //       vm._self = vm;
         //       initLifecycle(vm);
         //       initEvents(vm);
-        //       initRender(vm);
+        //       initRender(vm);  //createElement
         //       callHook(vm, 'beforeCreate');  //生命周期回调
         //       initInjections(vm);
-        //       initState(vm);
+        //       initState(vm);  //调用data函数
         //       initProvide(vm);
         //       callHook(vm, 'created');
         //       if (vm.$options.el) {
@@ -55,6 +56,7 @@ const Dlgs = function (options, callback) {
     }
     
     instance.callback = callback;
+    instance.resolve = resolve;
     
     Vue.nextTick(() => {
         //直接向实例的data和prop赋值
@@ -67,7 +69,9 @@ const Dlgs = function (options, callback) {
 
 Dlgs.user = (message, options, callback) => {
     Object.assign(options, {message})
-    Dlgs(options, callback);
+    return new Promise((resolve) => {
+      Dlgs(options, callback, resolve);
+    });
 }
 
 export default Dlgs;

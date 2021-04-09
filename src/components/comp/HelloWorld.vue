@@ -21,7 +21,7 @@
     </el-form-item>  
 
     <el-form-item>
-        <el-button type="primary">主要按钮</el-button>
+        <el-button @click="formRefClick" type="primary">主要按钮</el-button>
     </el-form-item>    
     </el-form>
 
@@ -152,7 +152,7 @@ export default {
             { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
           ],
           mySelect: [
-            {required: true, message: 'required', trigger: 'blur'},
+            {required: true, message: 'required', trigger: 'blur'},     
           ]
       }
     }
@@ -161,6 +161,11 @@ export default {
     msg: String
   },
   methods: {
+    formRefClick() {
+      this.$refs.formRef.validate((valid) => {
+        console.log(valid);
+      })
+    },
     onClick() {
       console.log(CODE.globalEnum.OK);  //这个值在console是不能inspect的
     },

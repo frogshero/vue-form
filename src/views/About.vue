@@ -1,6 +1,7 @@
 <template>
 <div>
 <button @click="onClick">打开Dialog</button>
+<button @click="onPrompt">打开Prompt</button>
 </div>
 </template>
 
@@ -16,7 +17,21 @@ export default {
   },
   methods: {
     onClick() {    
-      this.$dlgs.user('fffffff', {qq: 1234}, (res) => console.log(res));
+      this.$dlgs.user('fffffff', {qq: 1234}).then(res => {
+        console.log(res)        
+      });
+    },
+    onPrompt() {
+      this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        });
     }
   },
   mounted() {

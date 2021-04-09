@@ -70,6 +70,9 @@ export default {
         callback: {
             type: Function
         },
+        resolve: {
+            type: Function
+        },
         options: {
             type: Object,
             //必须是函数
@@ -80,6 +83,8 @@ export default {
         onClose() {
             if (this.callback) {
                 this.callback(Object.assign({bb: 2, cc: '1234'}, this.options));
+            } else {
+                this.resolve(Object.assign({bb: 2, cc: '1234'}, this.options));
             }
         }
     },
